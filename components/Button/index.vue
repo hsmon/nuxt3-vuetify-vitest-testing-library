@@ -1,25 +1,24 @@
 <template>
-  <div>
-    <v-container>
-      <v-btn
-        depressed
-        :color="color"
-        role="button"
-      >
-        {{ color }}
-      </v-btn>
-    </v-container>
-  </div>
+  <v-app>
+    <v-btn @click="onClick">
+      {{ label }}
+    </v-btn>
+  </v-app>
 </template>
 
-<script lang='ts'>
-export default {
-  name: 'Button',
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   props: {
-    color: {
-      type: String,
-      default: 'primary'
+    label: String,
+  },
+  name: 'Sample',
+  setup() {
+    const onClick = () => {
+      console.log('clicked')
     }
-  }
-}
+    return { onClick }
+  },
+})
 </script>

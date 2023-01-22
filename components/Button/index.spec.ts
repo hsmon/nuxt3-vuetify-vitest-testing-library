@@ -3,12 +3,14 @@ import { fireEvent } from '@testing-library/vue'
 import customRender from '@/customRender'
 import Button from './index.vue'
 
+const props = {
+  label: "Test Text"
+}
+
 describe('Button', () => {
   it('should render correctly', () => {
     const { getByRole } = customRender(Button, {
-      props: {
-        color: 'primary',
-      },
+      props
     })
 
     expect(getByRole('button')).toBeTruthy()
@@ -16,11 +18,9 @@ describe('Button', () => {
 
   it('should emit click event', () => {
     const { getByText } = customRender(Button, {
-      props: {
-        color: 'primary',
-      },
+      props
     })
 
-    fireEvent.click(getByText('primary'))
+    fireEvent.click(getByText(props.label))
   })
 })
